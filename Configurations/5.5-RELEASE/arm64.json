@@ -7,7 +7,7 @@
     "installerDir": "./InstallPackagers/SwiftCrossCompiler/Developer",
     "cachePath": "/tmp",
     "macToolchain": "https://swift.org/builds/swift-5.5-release/xcode/swift-5.5-RELEASE/swift-5.5-RELEASE-osx.pkg",
-    "targetToolchain": "https://github.com/futurejones/swift-arm64/releases/download/v5.5-RELEASE/swiftlang-5.5-ubuntu-20.04-release-aarch64-16-2021-07-07.tar.gz",
+    "targetToolchain": "https://github.com/futurejones/swift-arm64/releases/download/v5.5-RELEASE/swiftlang-5.5-ubuntu-20.04-release-aarch64-01-2021-09-23.tar.gz",
     "binutilsSource": "https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.gz",
     "packageMirror": "ftp://ports.ubuntu.com/ubuntu-ports",
     "packageSources": [
