@@ -3,7 +3,7 @@
     "version": "5.5",
     "toolchainSuffix": "RELEASE",
     "targetArch": "armv7",
-    "gnuExtension": "-gnu",
+    "gnuExtension": "-gnueabihf",
     "installerDir": "./InstallPackagers/SwiftCrossCompiler/Developer",
     "cachePath": "/tmp",
     "macToolchain": "https://swift.org/builds/swift-5.5-release/xcode/swift-5.5-RELEASE/swift-5.5-RELEASE-osx.pkg",
