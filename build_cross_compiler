@@ -394,6 +394,8 @@ if [ "$subdir" == "usr" ]; then
 	# Normal toolchain
 	echo "    working in top level directory"
 
+	rm -rf "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/pm/PluginAPI/PackagePlugin.swiftmodule"
+	rm -rf "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/pm/ManifestAPI/PackageDescription.swiftmodule"
 	rsync -a "$tmp/usr/lib/swift/linux"        "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/"
 	rsync -a "$tmp/usr/lib/swift_static/linux" "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift_static/"
 
