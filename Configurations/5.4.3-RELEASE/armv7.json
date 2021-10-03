@@ -3,7 +3,7 @@
     "version": "5.4.3",
     "toolchainSuffix": "RELEASE",
     "targetArch": "armv7",
-    "gnuExtension": "eabihf",
+    "gnuExtension": "-gnueabihf",
     "installerDir": "./InstallPackagers/SwiftCrossCompiler/Developer",
     "cachePath": "/tmp",
     "macToolchain": "https://swift.org/builds/swift-5.4.3-release/xcode/swift-5.4.3-RELEASE/swift-5.4.3-RELEASE-osx.pkg",
