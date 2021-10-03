@@ -394,8 +394,6 @@ if [ "$subdir" == "usr" ]; then
 	# Normal toolchain
 	echo "    working in top level directory"
 
-	rm -rf "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/pm/PluginAPI/PackagePlugin.swiftmodule"
-	rm -rf "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/pm/ManifestAPI/PackageDescription.swiftmodule"
 	rsync -a "$tmp/usr/lib/swift/linux"        "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/"
 	rsync -a "$tmp/usr/lib/swift_static/linux" "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift_static/"
 
@@ -422,6 +420,11 @@ if [ ! -L ${xc_tc_name}/usr/bin/swift-autolink-extract ]; then
 	ln -s swift ${xc_tc_name}/usr/bin/swift-autolink-extract
 fi
 )
+
+# copy run time into sysroot
+echo "Copying linux runtime into sysroot ${xc_tc_name}"
+rsync -a "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/linux" "${cross_tc_basename}/${xc_tc_name}/usr/lib/swift/"
+rm -rf "${cross_tc_basename}/${xc_tc_name}/usr/lib/swift/linux/${TARGET_ARCH}"/*.swift*
 
 echo "Verify SDK Links at ${cross_sdk_basename}/${linux_sdk_name}"
 VALID=`find ${cross_sdk_basename}/${linux_sdk_name} -type l -exec sh -c 'file -b "$1" | grep -q ^broken' sh {} \; -print | wc | awk '{print($1)}'`
