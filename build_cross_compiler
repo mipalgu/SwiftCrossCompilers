@@ -424,6 +424,7 @@ fi
 # copy run time into sysroot
 echo "Copying linux runtime into sysroot ${xc_tc_name}"
 rsync -a "${cross_sdk_basename}/${linux_sdk_name}/usr/lib/swift/linux" "${cross_tc_basename}/${xc_tc_name}/usr/lib/swift/"
+rm -rf "${cross_tc_basename}/${xc_tc_name}/usr/lib/swift/linux"/*.swift*
 rm -rf "${cross_tc_basename}/${xc_tc_name}/usr/lib/swift/linux/${TARGET_ARCH}"/*.swift*
 
 echo "Verify SDK Links at ${cross_sdk_basename}/${linux_sdk_name}"
