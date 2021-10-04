@@ -533,6 +533,8 @@ cd $BASEDIR
 	rm -rf .build
 )
 
+INSTALLER_DIR_REALPATH=$(realpath $INSTALLER_DIR)
+
 mkdir -p $INSTALLER_DIR/SDKs
 rm -rf "$INSTALLER_DIR/SDKs/$linux_sdk_name"
 mv "$cross_sdk_basename/$linux_sdk_name" "$INSTALLER_DIR/SDKs/$linux_sdk_name"
@@ -547,7 +549,17 @@ mv "$cross_runtime_basename/$runtime_name" "$INSTALLER_DIR/Runtimes/${runtime_na
 
 mkdir -p $INSTALLER_DIR/Destinations
 rm -rf "$INSTALLER_DIR/Destinations/$destination_name"
-cat "$cross_destination_basename/$destination_name" | sed s:${dest}:/Library/Developer:g > "$INSTALLER_DIR/Destinations/$destination_name"
+cat "$cross_destination_basename/$destination_name" | sed s:${dest}:${INSTALLER_DIR_REALPATH}:g > "$INSTALLER_DIR_REALPATH/Destinations/$destination_name"
+
+#mkdir -p /Library/Developer/SDKs
+#mkdir -p /Library/Developer/Toolchains
+#mkdir -p /Library/Developer/Runtimes
+#mkdir -p /Library/Developer/Destinations
+
+#ln -s "$INSTALLER_DIR/SDKs/$linux_sdk_name" "/Library/Developer/Destinations/$linux_sdk_name"
+#ln -s "$INSTALLER_DIR/Toolchains/$xc_tc_name" "/Library/Developer/Toolchains/$xc_tc_name"
+#ln -s "$INSTALLER_DIR/Runtimes/$runtime_name" "/Library/Developer/Runtimes/$runtime_name"
+#ln -s "$INSTALLER_DIR/Destinations/$destination_name" "/Library/Developer/Destinations/$destination_name"
 	
 # --- Notify completion --------------------------------------------------------
 echo
